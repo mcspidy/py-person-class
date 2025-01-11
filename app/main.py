@@ -6,9 +6,10 @@ class Person:
         self.age = age
         Person.people[name] = self
 
+
 def create_person_list(people: list[dict]) -> list:
     person_list = [Person(person["name"], person["age"]) for person in people]
-    
+
     for i, person_info in enumerate(people):
         spouse_name = person_info.get("wife") or person_info.get("husband")
         if spouse_name:
@@ -21,5 +22,5 @@ def create_person_list(people: list[dict]) -> list:
                 person_list[i].husband = spouse
                 if spouse:
                     spouse.wife = person_list[i]
-    
+
     return person_list
